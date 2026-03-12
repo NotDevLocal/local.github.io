@@ -125,6 +125,10 @@
       max-width: 100%;
     }
 
+    figure {
+      margin: 0;
+    }
+
     button,
     input,
     textarea,
@@ -378,10 +382,10 @@
 
     .hero-title {
       margin: 0;
-      font-size: clamp(3.9rem, 9vw, 6.4rem);
-      line-height: 0.9;
-      letter-spacing: -0.085em;
-      font-weight: 800;
+      font-size: clamp(3.7rem, 8.5vw, 6rem);
+      line-height: 0.92;
+      letter-spacing: -0.078em;
+      font-weight: 760;
       color: transparent;
       background: linear-gradient(135deg, #ffffff 0%, #e7ddff 58%, #b497ff 100%);
       background-clip: text;
@@ -439,16 +443,16 @@
       display: inline-flex;
       align-items: center;
       justify-content: flex-start;
-      width: min(var(--rotator-width), 100%);
+      width: auto;
       max-width: 100%;
       min-height: 44px;
-      padding: 10px 16px;
+      padding: 10px 14px;
       border: 1px solid var(--line-strong);
       border-radius: 999px;
       background: var(--surface-soft);
       box-shadow: var(--shadow-soft);
       overflow: hidden;
-      transition: width 320ms ease, border-color 220ms ease, box-shadow 220ms ease;
+      transition: width 280ms ease, border-color 220ms ease, box-shadow 220ms ease;
     }
 
     .rotator-text,
@@ -482,7 +486,7 @@
       max-width: 60ch;
       margin: 22px 0 0;
       color: var(--muted-strong);
-      font-size: 0.98rem;
+      font-size: 0.95rem;
     }
 
     .hero-actions {
@@ -561,7 +565,7 @@
     }
 
     .contact-card {
-      padding: 18px;
+      padding: 18px 18px 16px;
       border: 1px solid var(--line);
       border-radius: 26px;
       background:
@@ -572,16 +576,16 @@
 
     .contact-head {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 94px;
-      gap: 14px;
+      grid-template-columns: minmax(0, 1fr) 86px;
+      gap: 8px;
       align-items: start;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .profile-frame {
       position: relative;
       aspect-ratio: 1;
-      width: 100%;
+      width: 72px;
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid var(--line);
@@ -589,6 +593,8 @@
         radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.16), transparent 30%),
         linear-gradient(145deg, rgba(153, 122, 255, 0.28), rgba(14, 10, 24, 0.94));
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      justify-self: end;
+      align-self: start;
     }
 
     body[data-theme="light"] .profile-frame {
@@ -601,6 +607,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
     }
 
     .profile-frame.is-missing img {
@@ -646,7 +653,7 @@
     .contact-list {
       margin: 0;
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     .contact-item {
@@ -695,7 +702,8 @@
 
     .expertise-grid,
     .workflow-grid,
-    .rates-grid,
+    .rates-primary,
+    .rates-secondary,
     .testimonials-grid,
     .terms-layout {
       display: grid;
@@ -804,8 +812,8 @@
         var(--surface);
       box-shadow: var(--shadow);
       display: grid;
-      grid-template-rows: minmax(0, 1fr) auto;
-      gap: 14px;
+      grid-template-rows: auto auto;
+      gap: 12px;
       text-align: center;
       align-items: start;
     }
@@ -833,7 +841,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px;
+      padding: 0;
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -851,9 +859,9 @@
     .work-thumb img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
-      border-radius: 14px;
+      border-radius: 0;
       transition: opacity 180ms ease;
     }
 
@@ -891,10 +899,10 @@
       width: 100%;
       text-align: center;
       color: var(--text);
-      min-height: 2.75em;
-      font-size: 0.96rem;
+      min-height: 2.5em;
+      font-size: 0.94rem;
       font-weight: 700;
-      line-height: 1.35;
+      line-height: 1.28;
       letter-spacing: -0.02em;
       display: flex;
       align-items: center;
@@ -973,8 +981,19 @@
       min-height: 192px;
     }
 
-    .rates-grid {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+    .rates-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .rates-primary {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    .rates-secondary {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      align-items: stretch;
     }
 
     .rate-card {
@@ -982,6 +1001,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
+      padding: 22px 22px 20px;
     }
 
     .popular-card {
@@ -995,19 +1015,12 @@
       box-shadow: 0 0 36px rgba(241, 204, 113, 0.2), var(--shadow-soft);
     }
 
-    .rates-grid .rate-card:nth-child(-n+3) {
-      grid-column: span 2;
-    }
-
-    .rates-grid .rate-card:nth-child(n+4) {
-      grid-column: span 3;
-    }
-
     .rate-head {
       display: flex;
       align-items: flex-start;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: 12px;
+      margin-bottom: 8px;
     }
 
     .rate-badge {
@@ -1032,11 +1045,16 @@
 
     .rate-head h3 {
       margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.22;
+    }
+
+    .popular-card .rate-head h3 {
       padding-right: 82px;
     }
 
     .rate-amount {
-      margin: 14px 0 12px;
+      margin: 0 0 12px;
       color: var(--text);
       font-size: 1.72rem;
       font-weight: 800;
@@ -1044,9 +1062,13 @@
       letter-spacing: -0.05em;
     }
 
+    .rate-card > p {
+      line-height: 1.62;
+    }
+
     .rate-note {
-      margin-top: 16px;
-      padding-top: 16px;
+      margin-top: 14px;
+      padding-top: 14px;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 0.93rem;
@@ -1055,7 +1077,7 @@
     .terms-layout {
       margin-top: 22px;
       display: grid;
-      grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
       gap: 18px;
       align-items: start;
     }
@@ -1065,19 +1087,31 @@
       gap: 18px;
     }
 
+    .text-card {
+      padding: 22px 22px 20px;
+    }
+
     .text-card ol,
     .text-card ul {
-      margin: 16px 0 0;
+      margin: 18px 0 0;
       padding-left: 20px;
       color: var(--muted);
     }
 
+    .text-card > p {
+      line-height: 1.68;
+    }
+
+    .text-card li {
+      line-height: 1.72;
+    }
+
     .text-card li + li {
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .supporting-copy {
-      margin-top: 16px;
+      margin-top: 18px;
       color: var(--muted-strong);
     }
 
@@ -1089,7 +1123,7 @@
       list-style: none;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 12px;
       padding: 0;
       margin: 18px 0 0;
     }
@@ -1098,7 +1132,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      min-height: 100%;
+      min-height: 58px;
       padding: 14px 16px;
       border: 1px solid var(--line);
       border-radius: 20px;
@@ -1106,6 +1140,7 @@
       color: var(--text);
       text-align: left;
       font-weight: 600;
+      line-height: 1.5;
     }
 
     .testimonials-grid {
@@ -1245,12 +1280,12 @@
         grid-template-columns: 1fr;
       }
 
-      .rates-grid {
+      .rates-primary {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .rates-grid .rate-card:nth-child(-n+5) {
-        grid-column: span 1;
+      .rates-secondary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .work-grid {
@@ -1295,12 +1330,9 @@
         grid-template-columns: 1fr;
       }
 
-      .rates-grid {
+      .rates-primary,
+      .rates-secondary {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .rates-grid .rate-card:nth-child(-n+5) {
-        grid-column: span 1;
       }
 
       .cta-panel,
@@ -1355,12 +1387,9 @@
       }
 
       .work-grid,
-      .rates-grid {
+      .rates-primary,
+      .rates-secondary {
         grid-template-columns: 1fr;
-      }
-
-      .rates-grid .rate-card:nth-child(-n+5) {
-        grid-column: span 1;
       }
 
       .hero-actions .button {
@@ -1722,48 +1751,53 @@
           <p>Pricing varies widely by the project, here is a general pricing tier to give you an idea of my rates.</p>
         </div>
 
-        <div class="rates-grid">
-          <article class="card rate-card surface reveal">
-            <div class="rate-head">
-              <h3>Small Tasks</h3>
-            </div>
-            <p class="rate-amount">$10 - $20</p>
-            <p>Simple scripts, minor bug fixes, and small gameplay mechanics.</p>
-            <p class="rate-note">(For example, fixing small scripts, adding small mechanics, tweaking UI scripts, etc.)</p>
-          </article>
-          <article class="card rate-card surface reveal">
-            <div class="rate-head">
-              <h3>Gameplay Features</h3>
-            </div>
-            <p class="rate-amount">$25 - $50</p>
-            <p>Standalone gameplay mechanics or feature implementations with moderate complexity.</p>
-            <p class="rate-note">(For example, a UI feature, expanding a feature, a daily rewards system, etc.)</p>
-          </article>
-          <article class="card rate-card surface reveal">
-            <div class="rate-head">
-              <h3>Advanced Systems</h3>
-            </div>
-            <p class="rate-amount">$75 &ndash; $200</p>
-            <p>Complex systems that require a structured architecture, networking, or multiple components.</p>
-            <p class="rate-note">(For example, a complex inventory system, saving system, progression system, etc.)</p>
-          </article>
-          <article class="card rate-card surface reveal">
-            <div class="rate-head">
-              <h3>Major Game Systems</h3>
-            </div>
-            <p class="rate-amount">$250 - $500</p>
-            <p>Large-scale systems that power a major portion of the game.</p>
-            <p class="rate-note">(For example, an entire economy system, core gameplay loop, full UI framework, etc.)</p>
-          </article>
-          <article class="card rate-card popular-card surface reveal">
-            <span class="rate-badge">Popular</span>
-            <div class="rate-head">
-              <h3>Full Game Development</h3>
-            </div>
-            <p class="rate-amount">$500 - $1,000+</p>
-            <p>Scripting full games from the ground up or large-scale production-level projects.</p>
-            <p class="rate-note">(For example, scripting an entire simulator game or an entire RPG game; the full game package.)<br>Note that for full games, pricing varies widely and can be negotiated.</p>
-          </article>
+        <div class="rates-stack">
+          <div class="rates-primary">
+            <article class="card rate-card surface reveal">
+              <div class="rate-head">
+                <h3>Small Tasks</h3>
+              </div>
+              <p class="rate-amount">$10 - $20</p>
+              <p>Simple scripts, minor bug fixes, and small gameplay mechanics.</p>
+              <p class="rate-note">(For example, fixing small scripts, adding small mechanics, tweaking UI scripts, etc.)</p>
+            </article>
+            <article class="card rate-card surface reveal">
+              <div class="rate-head">
+                <h3>Gameplay Features</h3>
+              </div>
+              <p class="rate-amount">$25 - $50</p>
+              <p>Standalone gameplay mechanics or feature implementations with moderate complexity.</p>
+              <p class="rate-note">(For example, a UI feature, expanding a feature, a daily rewards system, etc.)</p>
+            </article>
+            <article class="card rate-card surface reveal">
+              <div class="rate-head">
+                <h3>Advanced Systems</h3>
+              </div>
+              <p class="rate-amount">$75 &ndash; $200</p>
+              <p>Complex systems that require a structured architecture, networking, or multiple components.</p>
+              <p class="rate-note">(For example, a complex inventory system, saving system, progression system, etc.)</p>
+            </article>
+          </div>
+
+          <div class="rates-secondary">
+            <article class="card rate-card surface reveal">
+              <div class="rate-head">
+                <h3>Major Game Systems</h3>
+              </div>
+              <p class="rate-amount">$250 - $500</p>
+              <p>Large-scale systems that power a major portion of the game.</p>
+              <p class="rate-note">(For example, an entire economy system, core gameplay loop, full UI framework, etc.)</p>
+            </article>
+            <article class="card rate-card popular-card surface reveal">
+              <span class="rate-badge">Popular</span>
+              <div class="rate-head">
+                <h3>Full Game Development</h3>
+              </div>
+              <p class="rate-amount">$500 - $1,000+</p>
+              <p>Scripting full games from the ground up or large-scale production-level projects.</p>
+              <p class="rate-note">(For example, scripting an entire simulator game or an entire RPG game; the full game package.)<br>Note that for full games, pricing varies widely and can be negotiated.</p>
+            </article>
+          </div>
         </div>
 
         <div class="terms-layout">
@@ -1925,8 +1959,15 @@
 
     function syncRotatorWidth(text) {
       rotatorMeasure.textContent = text;
-      const width = Math.ceil(rotatorMeasure.getBoundingClientRect().width + 38);
-      rotatorShell.style.setProperty("--rotator-width", `${Math.max(220, width)}px`);
+      if (window.matchMedia("(max-width: 720px)").matches) {
+        rotatorShell.style.width = "100%";
+        return;
+      }
+
+      window.requestAnimationFrame(() => {
+        const width = Math.ceil(rotatorMeasure.getBoundingClientRect().width + 28);
+        rotatorShell.style.width = `${Math.max(146, width)}px`;
+      });
     }
 
     function rotatePhrase() {
@@ -1988,6 +2029,10 @@
     syncRotatorWidth(phrases[0]);
     updateProgress();
     updateActiveNav();
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => syncRotatorWidth(rotatorText.textContent));
+    }
 
     themeToggle.addEventListener("click", () => {
       applyTheme(activeTheme === "dark" ? "light" : "dark");
